@@ -29,26 +29,6 @@ PulseArena is a self-contained, real-time esports tournament operations platform
 - **Live Recompile & Hot-Reload**: Bash daemon (`start.sh`) running incremental builds (`cmake --build build --target server -j2`) on source file modification.
 - **Test Harness**: Zero-dependency native JSON test runner in `tests/test_suite.cpp` invoked via `tests/run_tests.sh`.
 
-### Setup and Execution Commands
-
-#### Configure and Build
-```sh
-cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
-cmake --build build -j2
-```
-
-#### Run the Web Application with Hot-Reload
-```sh
-./start.sh
-```
-The server will bind to `0.0.0.0:8080` (or the port defined in `$PORT`). Static assets are served from `public/`.
-
-#### Run the Automated Challenge Test Suite
-```sh
-./tests/run_tests.sh
-```
-
----
 
 ## 2. Debugging Challenge
 
@@ -89,12 +69,4 @@ PulseArena has four reported logic defects distributed across its candidate-edit
 3. **Result Idempotency**: Re-submitting or retrying a match result does not award points or update win/loss tallies more than once.
 4. **Bracket Progression**: Playoff semifinals receive winners from distinct opening-round matchups (`winner-P2` for `S1`, `winner-P1` for `S2`), ensuring a balanced championship bracket.
 
-To validate your fixes against the automated test suite, run:
 
-```sh
-./tests/run_tests.sh
-```
-
-> **Test Execution Status**: The test suite was executed against the initial challenge repository. All 4 tests failed as expected (`"Failed": 4, "Passed": 0`), confirming the presence of the four intentional bugs waiting to be solved.
-#   p u l s e a r e n a _ c -  
- 
