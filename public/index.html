@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b111d">
+  <title>PulseArena · Tournament Control</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail">
+      <a class="brand-mark" href="./" aria-label="PulseArena home"><span class="brand-icon">P</span><span class="brand-word">pulse<span>arena</span></span></a>
+      <div class="rail-label">TOURNAMENT</div>
+      <nav><a class="nav-item active" href="./"><span class="nav-icon">◈</span>Overview</a><a class="nav-item" href="#groups"><span class="nav-icon">▦</span>Group stage</a><a class="nav-item" href="#bracket"><span class="nav-icon">⌘</span>Playoffs</a></nav>
+      <div class="rail-bottom"><div class="user-avatar">OC</div><div><strong>Organizer desk</strong><small>Event admin</small></div><span class="more">···</span></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div class="crumb">Events <span>/</span> Spring Invitational</div><div class="top-actions"><span class="live-pill"><i></i> LIVE EVENT</span><button class="icon-button" title="Notifications">♧<b></b></button><div class="top-avatar">OC</div></div></header>
+      <section class="page-heading"><div><div class="eyebrow">SATURDAY · DAY 02 · SEASON 2026</div><h1>Spring Invitational <span class="status-chip">Group stage live</span></h1><p>Campus Arena · 9 teams competing for the championship</p></div><div class="heading-actions"><button id="refreshBtn" class="button button-quiet">↻ <span>Refresh</span></button><button id="resetBtn" class="button button-primary">↺ Reset demo</button></div></section>
+      <div id="connection" class="connection" aria-live="polite"></div>
+      <section class="stats-grid" id="stats"></section>
+      <section class="content-grid">
+        <article class="panel group-panel" id="groups"><div class="panel-heading"><div><div class="eyebrow">QUALIFICATION</div><h2>Group standings</h2></div><span class="subtle">Top 2 advance · points then score diff</span></div><div id="groupsContent" class="groups-grid"></div></article>
+        <article class="panel matches-panel"><div class="panel-heading"><div><div class="eyebrow">UP NEXT</div><h2>Fixture desk</h2></div><select id="groupFilter" aria-label="Filter fixtures"><option value="all">All groups</option><option>Alpha</option><option>Beta</option><option>Gamma</option></select></div><div id="matchesContent" class="match-list"></div></article>
+      </section>
+      <section class="panel bracket-panel" id="bracket"><div class="panel-heading"><div><div class="eyebrow">6 QUALIFIERS · SINGLE ELIMINATION</div><h2>Championship bracket</h2></div><span class="subtle">Seeds 1–2 receive opening-round byes</span></div><div id="bracketContent" class="bracket-grid"></div></section>
+      <footer><span>PulseArena Tournament OS</span><span>State sync <b id="syncTime">—</b></span></footer>
+    </main>
+  </div>
+  <script src="./js/app.js" defer></script>
+</body>
+</html>

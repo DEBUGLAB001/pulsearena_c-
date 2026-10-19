@@ -1,0 +1,17 @@
+{
+  "challenge_id": "pulsearena-cpp",
+  "title": "PulseArena Tournament Control Operations",
+  "description": "Debug group stage standings tiebreaks, schedule uniqueness, result recording idempotency, and playoff bracket bye paths in a tournament operations platform.",
+  "runtime_config": {
+    "runtime_type": "cpp-cmake",
+    "install_command": "cmake -B build -S . -DCMAKE_BUILD_TYPE=Release && cmake --build build -j2",
+    "start_command": "./start.sh",
+    "test_command": "./tests/run_tests.sh",
+    "ports": [
+      {
+        "container_port": 8080,
+        "type": "preview"
+      }
+    ]
+  }
+}
