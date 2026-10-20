@@ -1,24 +1,40 @@
 #pragma once
+
 #include <string>
 #include <vector>
 
 namespace pulsearena {
 
 struct Team {
-  std::string id, name, group;
-  int points = 0, wins = 0, losses = 0, scored = 0, conceded = 0;
+  std::string id;
+  std::string name;
+  std::string group;
+  int points = 0;
+  int wins = 0;
+  int losses = 0;
+  int scored = 0;
+  int conceded = 0;
 };
 
 struct Match {
-  std::string id, group, home, away;
+  std::string id;
+  std::string group;
+  std::string home;
+  std::string away;
   bool played = false;
   std::string winner;
-  int homeScore = 0, awayScore = 0;
+  int homeScore = 0;
+  int awayScore = 0;
 };
 
 struct BracketSlot {
-  std::string round, matchId, teamA, teamB, winner;
-  bool byeA = false, byeB = false;
+  std::string round;
+  std::string matchId;
+  std::string teamA;
+  std::string teamB;
+  std::string winner;
+  bool byeA = false;
+  bool byeB = false;
 };
 
 struct Tournament {

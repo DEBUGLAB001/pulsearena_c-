@@ -15,9 +15,12 @@ using json = nlohmann::json;
 namespace fs = std::filesystem;
 
 namespace {
+
 std::string readFileContent(const std::string& path) {
   std::ifstream file(path, std::ios::binary);
-  if (!file) return {};
+  if (!file) {
+    return {};
+  }
   std::ostringstream ss;
   ss << file.rdbuf();
   return ss.str();
@@ -26,11 +29,18 @@ std::string readFileContent(const std::string& path) {
 std::string computeVersion() {
   std::uintmax_t stamp = 0;
   const std::vector<std::string> paths = {
-    "public/index.html", "public/js/app.js", "public/css/style.css",
-    "include/tournament.hpp", "src/main.cpp", "src/service/tournament.cpp",
-    "src/service/standings.cpp", "src/service/schedule.cpp",
-    "src/service/results.cpp", "src/service/bracket.cpp"
+    "public/index.html",
+    "public/js/app.js",
+    "public/css/style.css",
+    "include/tournament.hpp",
+    "src/main.cpp",
+    "src/service/tournament.cpp",
+    "src/service/standings.cpp",
+    "src/service/schedule.cpp",
+    "src/service/results.cpp",
+    "src/service/bracket.cpp"
   };
+
   for (const auto& path : paths) {
     std::error_code ec;
     auto val = fs::last_write_time(path, ec);
@@ -38,8 +48,10 @@ std::string computeVersion() {
       stamp += static_cast<std::uintmax_t>(val.time_since_epoch().count());
     }
   }
+
   return std::to_string(stamp);
 }
+
 } // namespace
 
 int main() {
@@ -89,8 +101,12 @@ int main() {
     if (matchId.empty() && !req.body.empty()) {
       try {
         auto parsed = json::parse(req.body);
-        if (parsed.contains("matchId")) matchId = parsed["matchId"].get<std::string>();
-        if (parsed.contains("winner")) winner = parsed["winner"].get<std::string>();
+        if (parsed.contains("matchId")) {
+          matchId = parsed["matchId"].get<std::string>();
+        }
+        if (parsed.contains("winner")) {
+          winner = parsed["winner"].get<std::string>();
+        }
       } catch (...) {}
     }
 
@@ -142,3 +158,4 @@ int main() {
   svr.listen("0.0.0.0", port);
   return 0;
 }
+
