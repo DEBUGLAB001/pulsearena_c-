@@ -13,5 +13,11 @@
         "type": "preview"
       }
     ]
-  }
+  },
+  "bug_topics": [
+    "Custom Comparator",
+    "Round-Robin Scheduling",
+    "Idempotency",
+    "Tournament Bracket"
+  ]
 }
